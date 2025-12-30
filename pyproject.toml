@@ -2,7 +2,7 @@
 name = "mcp-tmux-server"
 version = "0.1.0"
 description = "MCP server for interactive tmux terminal sessions with Claude Code"
-authors = ["Your Name <your.email@example.com>"]
+authors = ["Grigori Kartashyan <grigori.kartashyan@gmail.com>"]
 readme = "README.md"
 packages = [{include = "mcp_tmux", from = "src"}]
 
