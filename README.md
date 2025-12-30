@@ -26,30 +26,45 @@ All tasks for a project share one tmux session with multiple panes.
 ## Prerequisites
 
 - Python >= 3.10
-- [Poetry](https://python-poetry.org/docs/#installation) for dependency management
 - tmux installed on your system:
   - macOS: `brew install tmux`
   - Linux: `apt install tmux` or `yum install tmux`
 
 ## Installation
 
+### From PyPI (recommended)
+
 ```bash
+pip install mcp-tmux-server
+```
+
+Or with pipx for isolated installation:
+
+```bash
+pipx install mcp-tmux-server
+```
+
+### From source
+
+```bash
+git clone https://github.com/GrigoriLab/mcp-tmux-server.git
 cd mcp-tmux-server
 poetry install
 ```
 
 ## Register with Claude Code
 
+If installed via pip/pipx:
+
 ```bash
-claude mcp add --transport stdio --scope user tmux-terminal -- \
-  poetry --directory /path/to/mcp-tmux-server run python -m mcp_tmux.server
+claude mcp add --transport stdio --scope user tmux-terminal -- mcp-tmux
 ```
 
-Or using the virtualenv directly:
+If installed from source:
 
 ```bash
 claude mcp add --transport stdio --scope user tmux-terminal -- \
-  /path/to/mcp-tmux-server/.venv/bin/python -m mcp_tmux.server
+  poetry --directory /path/to/mcp-tmux-server run mcp-tmux
 ```
 
 ### Verify Registration
@@ -224,7 +239,13 @@ claude --mcp-debug
 ### Test Server Manually
 
 ```bash
-poetry run python -m mcp_tmux.server
+mcp-tmux
+```
+
+Or from source:
+
+```bash
+poetry run mcp-tmux
 ```
 
 ### Check Server Health
